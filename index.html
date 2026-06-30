@@ -47,6 +47,15 @@
     .label { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; }
     /* Hide number input arrows */
     input[type=tel]::-webkit-outer-spin-button, input[type=tel]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+    /* ---- Premium micro-interactions (smooth luxury easing) ---- */
+    .lux { transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s cubic-bezier(.22,1,.36,1); }
+    .lux:hover { transform: translateY(-5px); box-shadow: 0 26px 55px -28px rgba(21,18,13,.40); }
+    .zoom { overflow: hidden; }
+    .zoom img { transition: transform 1.15s cubic-bezier(.22,1,.36,1); will-change: transform; }
+    .zoom:hover img { transform: scale(1.05); }
+    .btn-lux { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1), background-color .35s ease; }
+    .btn-lux:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(47,110,132,.5); }
   </style>
 </head>
 
@@ -55,12 +64,8 @@
   <!-- ====================== TOP BAR ====================== -->
   <header class="fixed inset-x-0 top-0 z-40 border-b border-ink-900/10 bg-paper/85 backdrop-blur-xl">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8">
-      <a href="#" aria-label="Saum Studio — home" class="inline-flex items-center gap-2.5">
-        <span class="grid h-9 w-9 place-items-center rounded-full border border-teal/50 font-display text-lg italic text-teal">S</span>
-        <span class="leading-none">
-          <span class="block font-display text-[1.6rem] italic text-ink-900">Saum</span>
-          <span class="block text-[9px] uppercase tracking-[0.42em] text-ink-600">Studio</span>
-        </span>
+      <a href="#" aria-label="Saum Studio — home" class="inline-flex items-center">
+        <img src="assets/logo.png" alt="Saum Studio" class="h-12 w-auto md:h-14" />
       </a>
       <div class="flex items-center gap-3">
         <a href="tel:+918356076634" class="hidden items-center gap-2 text-sm font-medium text-ink-700 hover:text-ink-950 sm:flex">
@@ -74,37 +79,37 @@
 
   <!-- ====================== HERO (split screen) ====================== -->
   <section class="grid pt-16 md:grid-cols-2">
-    <!-- LEFT: solid dark copy panel (image only as faint texture behind a strong overlay) -->
-    <div class="relative isolate flex flex-col justify-center gap-8 overflow-hidden bg-ink-950 px-6 py-10 sm:px-10 md:px-12 md:py-12 lg:px-16">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80&auto=format&fit=crop" alt="" aria-hidden="true" class="absolute inset-0 -z-10 h-full w-full object-cover opacity-25" />
-      <div class="absolute inset-0 -z-10 bg-ink-950/80"></div>
+    <!-- LEFT: real interior photo behind a light cream wash — airy and readable -->
+    <div class="relative isolate flex flex-col justify-center gap-8 overflow-hidden bg-paper-200 px-6 py-10 sm:px-10 md:px-12 md:py-12 lg:px-16">
+      <img src="assets/new_home.jpeg" alt="" aria-hidden="true" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-paper-50/95 via-paper-50/89 to-paper-50/82"></div>
 
       <div>
-        <p class="label text-teal-400">Mumbai · Interior Design Studio · Est. 2017</p>
-        <h1 class="mt-5 font-display text-[2.6rem] leading-[1.05] text-paper-50 sm:text-5xl lg:text-[3.4rem]">
-          Beautiful, turnkey<br />home interiors<br /><span class="italic text-teal-400">from ₹11 Lacs.</span>
+        <p class="label text-teal">Mumbai · Interior Design Studio · Est. 2017</p>
+        <h1 class="mt-5 font-display text-[2.6rem] leading-[1.05] text-ink-950 sm:text-5xl lg:text-[3.4rem]">
+          Beautiful, turnkey<br />home interiors<br /><span class="italic text-teal">from ₹11 Lacs.</span>
         </h1>
-        <p class="mt-6 max-w-md text-[17px] leading-relaxed text-paper-50/85">
+        <p class="mt-6 max-w-md text-[17px] font-medium leading-relaxed text-ink-800">
           Design and execution under one roof. We design, build and hand over your
           1, 2 or 3 BHK — on time, on budget, beautifully finished.
         </p>
 
-        <!-- Offer chips -->
-        <div class="mt-7 flex flex-wrap gap-3">
-          <span class="inline-flex items-center gap-2 rounded-full bg-clay px-4 py-2 text-sm font-medium text-paper-50">★ Flat 20% OFF</span>
-          <span class="inline-flex items-center gap-2 rounded-full border border-paper-50/30 px-4 py-2 text-sm font-medium text-paper-50">FREE wall décor up to ₹50,000</span>
+        <!-- Offer -->
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-clay px-5 py-2.5 text-sm font-semibold text-paper-50 shadow-sm shadow-clay/20">★ Flat 20% OFF</span>
+          <span class="text-sm text-ink-600">Limited-period launch offer</span>
         </div>
       </div>
 
       <!-- Trust row (compact single line) -->
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-paper-50/15 pt-5 text-paper-50">
-        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">40+</strong><span class="text-sm text-paper-50/70">homes</span></span>
-        <span class="text-paper-50/25">·</span>
-        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">8+</strong><span class="text-sm text-paper-50/70">years</span></span>
-        <span class="text-paper-50/25">·</span>
-        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">8-wk</strong><span class="text-sm text-paper-50/70">handover</span></span>
-        <span class="text-paper-50/25">·</span>
-        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">100%</strong><span class="text-sm text-paper-50/70">turnkey</span></span>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-ink-900/15 pt-5 text-ink-950">
+        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">100+</strong><span class="text-sm text-ink-700">homes</span></span>
+        <span class="text-ink-900/40">·</span>
+        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">8+</strong><span class="text-sm text-ink-700">years</span></span>
+        <span class="text-ink-900/40">·</span>
+        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">8-wk</strong><span class="text-sm text-ink-700">handover</span></span>
+        <span class="text-ink-900/40">·</span>
+        <span class="flex items-baseline gap-1.5"><strong class="font-display text-xl">100%</strong><span class="text-sm text-ink-700">turnkey</span></span>
       </div>
     </div>
 
@@ -138,7 +143,7 @@
               <input name="area" type="text" placeholder="e.g. Andheri" class="w-full rounded-lg border border-ink-900/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-teal focus:ring-2 focus:ring-teal/20" />
             </div>
           </div>
-          <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-semibold text-paper-50 transition hover:bg-teal-600">
+          <button type="submit" class="btn-lux flex w-full items-center justify-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-semibold text-paper-50 hover:bg-teal-600">
             Get my free quote on WhatsApp
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.045z"/></svg>
           </button>
@@ -181,26 +186,26 @@
 
       <div class="mt-12 grid gap-6 md:grid-cols-3">
         <!-- card -->
-        <div class="reveal flex flex-col rounded-2xl border border-ink-900/10 bg-paper p-7">
+        <div class="reveal lux flex flex-col rounded-2xl border border-ink-900/10 bg-paper p-7">
           <div class="flex items-center justify-between"><h3 class="font-display text-2xl text-ink-950">1 BHK</h3><span class="rounded-full bg-clay/10 px-3 py-1 text-xs font-semibold text-clay">Save ₹2 Lacs</span></div>
           <div class="mt-4 flex items-end gap-2"><span class="text-ink-400 line-through">₹13 Lacs</span><span class="font-display text-3xl text-teal">₹11 Lacs</span></div>
           <p class="mt-1 text-sm text-ink-600">Onwards · all-inclusive</p>
-          <a href="#book" data-pkg="1 BHK" class="bookBtn mt-6 rounded-full bg-ink-950 py-3 text-center text-sm font-medium text-paper-50 transition hover:bg-teal">Book Now</a>
+          <a href="#book" data-pkg="1 BHK" class="bookBtn btn-lux mt-6 rounded-full bg-ink-950 py-3 text-center text-sm font-medium text-paper-50 hover:bg-teal">Book Now</a>
         </div>
         <!-- featured card -->
-        <div class="reveal relative flex flex-col rounded-2xl border-2 border-teal bg-paper p-7 shadow-xl shadow-teal/10">
+        <div class="reveal lux relative flex flex-col rounded-2xl border-2 border-teal bg-paper p-7 shadow-xl shadow-teal/10">
           <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-teal px-4 py-1 text-xs font-semibold text-paper-50">Most popular</span>
           <div class="flex items-center justify-between"><h3 class="font-display text-2xl text-ink-950">2 BHK</h3><span class="rounded-full bg-clay/10 px-3 py-1 text-xs font-semibold text-clay">Save ₹3 Lacs</span></div>
           <div class="mt-4 flex items-end gap-2"><span class="text-ink-400 line-through">₹16 Lacs</span><span class="font-display text-3xl text-teal">₹13 Lacs</span></div>
           <p class="mt-1 text-sm text-ink-600">Onwards · all-inclusive</p>
-          <a href="#book" data-pkg="2 BHK" class="bookBtn mt-6 rounded-full bg-teal py-3 text-center text-sm font-medium text-paper-50 transition hover:bg-teal-600">Book Now</a>
+          <a href="#book" data-pkg="2 BHK" class="bookBtn btn-lux mt-6 rounded-full bg-teal py-3 text-center text-sm font-medium text-paper-50 hover:bg-teal-600">Book Now</a>
         </div>
         <!-- card -->
-        <div class="reveal flex flex-col rounded-2xl border border-ink-900/10 bg-paper p-7">
+        <div class="reveal lux flex flex-col rounded-2xl border border-ink-900/10 bg-paper p-7">
           <div class="flex items-center justify-between"><h3 class="font-display text-2xl text-ink-950">3 BHK</h3><span class="rounded-full bg-clay/10 px-3 py-1 text-xs font-semibold text-clay">Save ₹4 Lacs</span></div>
           <div class="mt-4 flex items-end gap-2"><span class="text-ink-400 line-through">₹20 Lacs</span><span class="font-display text-3xl text-teal">₹16 Lacs</span></div>
           <p class="mt-1 text-sm text-ink-600">Onwards · all-inclusive</p>
-          <a href="#book" data-pkg="3 BHK" class="bookBtn mt-6 rounded-full bg-ink-950 py-3 text-center text-sm font-medium text-paper-50 transition hover:bg-teal">Book Now</a>
+          <a href="#book" data-pkg="3 BHK" class="bookBtn btn-lux mt-6 rounded-full bg-ink-950 py-3 text-center text-sm font-medium text-paper-50 hover:bg-teal">Book Now</a>
         </div>
       </div>
       <p class="reveal mt-8 text-center text-sm text-ink-700">Simple <strong class="text-ink-950">milestone-based payments</strong> tied to project progress · transparent, all-inclusive quotes</p>
@@ -216,7 +221,7 @@
           <p class="label text-teal">Everything included</p>
           <h2 class="mt-4 font-display text-3xl text-ink-950 md:text-4xl">One package. The whole home, done.</h2>
           <p class="mt-4 max-w-md text-ink-600">From the TV unit to the last coat of paint — design, materials, fittings and execution are all covered by our team. No chasing vendors.</p>
-          <div class="mt-8 overflow-hidden rounded-2xl">
+          <div class="zoom mt-8 overflow-hidden rounded-2xl">
             <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1500&q=80&auto=format&fit=crop" alt="Modular kitchen and living interior" class="h-64 w-full object-cover md:h-80" />
           </div>
         </div>
@@ -233,14 +238,15 @@
   <section class="bg-ink-950 py-16 text-paper-50 md:py-24">
     <div class="mx-auto max-w-7xl px-5 md:px-8">
       <div class="reveal max-w-2xl">
-        <p class="label text-teal-400">Why Saum Studio</p>
-        <h2 class="mt-4 font-display text-3xl md:text-4xl">Design you love, execution you can trust.</h2>
+        <p class="label text-teal-400">The Saum difference</p>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl">Why choose us?</h2>
       </div>
-      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="reveal"><div class="font-display text-xl text-teal-400">Design-led</div><p class="mt-2 text-sm text-paper-50/70">Every layout starts with how you actually live — Vastu-conscious and space-optimised.</p></div>
-        <div class="reveal"><div class="font-display text-xl text-teal-400">Turnkey</div><p class="mt-2 text-sm text-paper-50/70">Design and site execution under one roof, one accountable team.</p></div>
-        <div class="reveal"><div class="font-display text-xl text-teal-400">On time</div><p class="mt-2 text-sm text-paper-50/70">Quality checks at every stage — typical handover in about 8 weeks.</p></div>
-        <div class="reveal"><div class="font-display text-xl text-teal-400">Transparent</div><p class="mt-2 text-sm text-paper-50/70">Clear, all-inclusive pricing. No surprises after you sign.</p></div>
+      <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div class="reveal"><div class="font-display text-xl text-teal-400">Timely delivery</div><p class="mt-2 text-sm text-paper-50/70">Handover in about 8 weeks, with quality checks at every stage.</p></div>
+        <div class="reveal"><div class="font-display text-xl text-teal-400">Bespoke design</div><p class="mt-2 text-sm text-paper-50/70">Every layout is custom — designed around how you actually live.</p></div>
+        <div class="reveal"><div class="font-display text-xl text-teal-400">Superior materials</div><p class="mt-2 text-sm text-paper-50/70">Trusted brands and finishes built to last daily use.</p></div>
+        <div class="reveal"><div class="font-display text-xl text-teal-400">Experienced manpower</div><p class="mt-2 text-sm text-paper-50/70">A skilled in-house team and vetted on-site craftsmen.</p></div>
+        <div class="reveal"><div class="font-display text-xl text-teal-400">Transparency</div><p class="mt-2 text-sm text-paper-50/70">Clear, all-inclusive pricing. No surprises after you sign.</p></div>
       </div>
 
       <!-- Brand trust strip -->
@@ -278,10 +284,10 @@
     <div class="mx-auto max-w-7xl px-5 md:px-8">
       <div class="reveal max-w-2xl"><p class="label text-teal">A glimpse inside</p><h2 class="mt-4 font-display text-3xl text-ink-950 md:text-4xl">Real homes we've shaped in Mumbai.</h2></div>
       <div class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-        <img class="reveal aspect-[3/4] w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&q=80&auto=format&fit=crop" alt="Living room" />
-        <img class="reveal aspect-[3/4] w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=900&q=80&auto=format&fit=crop" alt="Modular kitchen" />
-        <img class="reveal aspect-[3/4] w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80&auto=format&fit=crop" alt="Master bedroom" />
-        <img class="reveal aspect-[3/4] w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=80&auto=format&fit=crop" alt="Dining area" />
+        <div class="reveal zoom rounded-xl"><img class="aspect-[3/4] w-full object-cover" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&q=80&auto=format&fit=crop" alt="Living room" /></div>
+        <div class="reveal zoom rounded-xl"><img class="aspect-[3/4] w-full object-cover" src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=900&q=80&auto=format&fit=crop" alt="Modular kitchen" /></div>
+        <div class="reveal zoom rounded-xl"><img class="aspect-[3/4] w-full object-cover" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80&auto=format&fit=crop" alt="Master bedroom" /></div>
+        <div class="reveal zoom rounded-xl"><img class="aspect-[3/4] w-full object-cover" src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=900&q=80&auto=format&fit=crop" alt="Dining area" /></div>
       </div>
     </div>
   </section>
@@ -295,7 +301,7 @@
 
       <div class="relative mt-10 grid items-start gap-5 md:grid-cols-2 md:gap-8">
         <figure class="reveal">
-          <div class="relative overflow-hidden rounded-2xl">
+          <div class="zoom relative overflow-hidden rounded-2xl">
             <img src="https://images.unsplash.com/photo-1722859179261-dd72877cb7c3?w=1200&q=80&auto=format&fit=crop" alt="Before — a bare, unfurnished flat" class="aspect-[4/3] w-full object-cover" />
             <span class="absolute left-3 top-3 rounded-full bg-ink-950/75 px-3 py-1 text-xs font-medium text-paper-50">Before</span>
           </div>
@@ -303,8 +309,8 @@
         </figure>
 
         <figure class="reveal">
-          <div class="relative overflow-hidden rounded-2xl">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80&auto=format&fit=crop" alt="After — a finished home styled by Saum Studio" class="aspect-[4/3] w-full object-cover" />
+          <div class="zoom relative overflow-hidden rounded-2xl">
+            <img src="assets/new_home.jpeg" alt="After — a finished home styled by Saum Studio" class="aspect-[4/3] w-full object-cover" />
             <span class="absolute left-3 top-3 rounded-full bg-teal px-3 py-1 text-xs font-medium text-paper-50">After</span>
           </div>
           <figcaption class="mt-3 px-1 text-sm text-ink-600">Finished &amp; styled by Saum Studio</figcaption>
@@ -334,13 +340,13 @@
           <div class="font-display text-4xl leading-none text-paper-50">4.9</div>
           <div>
             <div class="text-gold">★★★★★</div>
-            <div class="mt-1 text-xs text-paper-50/70">Based on 40+ delivered homes</div>
+            <div class="mt-1 text-xs text-paper-50/70">Based on 100+ delivered homes</div>
           </div>
         </div>
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <figure class="reveal rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
+        <figure class="reveal lux rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
           <div class="flex items-center gap-3">
             <span class="grid h-10 w-10 place-items-center rounded-full bg-teal font-display text-lg text-paper-50">R</span>
             <div><div class="text-sm font-semibold text-paper-50">Client name</div><div class="text-xs text-paper-50/60">2 BHK · Andheri</div></div>
@@ -348,7 +354,7 @@
           <div class="mt-4 text-gold">★★★★★</div>
           <blockquote class="mt-2 text-paper-50/85">“They handled design and execution end to end. We moved into a finished home, on time. Zero stress.”</blockquote>
         </figure>
-        <figure class="reveal rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
+        <figure class="reveal lux rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
           <div class="flex items-center gap-3">
             <span class="grid h-10 w-10 place-items-center rounded-full bg-clay font-display text-lg text-paper-50">P</span>
             <div><div class="text-sm font-semibold text-paper-50">Client name</div><div class="text-xs text-paper-50/60">3 BHK · Powai</div></div>
@@ -356,7 +362,7 @@
           <div class="mt-4 text-gold">★★★★★</div>
           <blockquote class="mt-2 text-paper-50/85">“Transparent pricing and beautiful finishing. The modular kitchen is our favourite part of the house.”</blockquote>
         </figure>
-        <figure class="reveal rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
+        <figure class="reveal lux rounded-2xl border border-paper-50/12 bg-paper-50/5 p-7">
           <div class="flex items-center gap-3">
             <span class="grid h-10 w-10 place-items-center rounded-full bg-sage font-display text-lg text-paper-50">S</span>
             <div><div class="text-sm font-semibold text-paper-50">Client name</div><div class="text-xs text-paper-50/60">1 BHK · Chembur</div></div>
@@ -411,7 +417,7 @@
       <h2 class="reveal font-display text-3xl md:text-5xl">Ready to start your home?</h2>
       <p class="reveal mx-auto mt-4 max-w-xl text-paper-50/85">Book a free consultation today and lock in <strong>20% OFF + FREE wall décor up to ₹50,000.</strong></p>
       <div class="reveal mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="#book" class="rounded-full bg-paper-50 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-ink-950 hover:text-paper-50">Book my free visit</a>
+        <a href="#book" class="btn-lux rounded-full bg-paper-50 px-8 py-4 text-sm font-semibold text-ink-950 hover:bg-ink-950 hover:text-paper-50">Book my free visit</a>
         <a href="https://wa.me/918356076634?text=Hi%20Saum%20Studio%2C%20I%27d%20like%20a%20free%20interior%20design%20consultation." target="_blank" rel="noopener" class="rounded-full border border-paper-50/50 px-8 py-4 text-sm font-semibold text-paper-50 transition hover:bg-paper-50/10">Chat on WhatsApp</a>
       </div>
       <p class="reveal mt-6 text-sm text-paper-50/80">Call us: <a href="tel:+918356076634" class="font-semibold underline">+91 83560 76634</a> &nbsp;·&nbsp; <a href="tel:+918698145630" class="font-semibold underline">+91 86981 45630</a></p>
@@ -423,21 +429,27 @@
     <div class="mx-auto max-w-7xl px-5 md:px-8">
       <div class="flex flex-col justify-between gap-8 md:flex-row">
         <div>
-          <div class="inline-flex items-center gap-2.5">
-            <span class="grid h-9 w-9 place-items-center rounded-full border border-paper-50/50 font-display text-lg italic text-paper-50">S</span>
-            <span class="leading-none">
-              <span class="block font-display text-[1.6rem] italic text-paper-50">Saum</span>
-              <span class="block text-[9px] uppercase tracking-[0.42em] text-paper-50/70">Studio</span>
-            </span>
-          </div>
-          <p class="mt-3 max-w-xs text-sm">Styling your dreams — soulful, functional interiors across Mumbai & MMR since 2017.</p>
+          <img src="assets/logo-light.png" alt="Saum Studio" class="h-16 w-auto" />
+          <p class="mt-4 max-w-xs text-sm">Soulful, functional interiors across Mumbai & MMR since 2017.</p>
         </div>
         <div class="text-sm">
           <p class="font-medium text-paper-50">Get in touch</p>
-          <p class="mt-2"><a href="tel:+918356076634" class="hover:text-paper-50">+91 83560 76634</a></p>
-          <p><a href="tel:+918698145630" class="hover:text-paper-50">+91 86981 45630</a></p>
-          <p><a href="mailto:studiosaum@gmail.com" class="hover:text-paper-50">studiosaum@gmail.com</a></p>
-          <p><a href="https://www.instagram.com/saumstudio/" target="_blank" rel="noopener" class="hover:text-paper-50">@saumstudio</a></p>
+          <a href="tel:+918356076634" class="mt-3 flex items-center gap-3 transition hover:text-paper-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6AA3BB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 83560 76634
+          </a>
+          <a href="tel:+918698145630" class="mt-2 flex items-center gap-3 transition hover:text-paper-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6AA3BB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 86981 45630
+          </a>
+          <a href="mailto:studiosaum@gmail.com" class="mt-2 flex items-center gap-3 transition hover:text-paper-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6AA3BB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            studiosaum@gmail.com
+          </a>
+          <a href="https://www.instagram.com/saumstudio/" target="_blank" rel="noopener" class="mt-2 flex items-center gap-3 transition hover:text-paper-50">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6AA3BB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @saumstudio
+          </a>
         </div>
       </div>
       <div class="mt-10 border-t border-paper-50/12 pt-6 text-xs text-paper-50/50">
