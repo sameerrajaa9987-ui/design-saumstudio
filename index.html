@@ -521,20 +521,53 @@
     // WhatsApp number for lead delivery
     var WA_NUMBER = '918356076634';
 
-    // Lead form -> WhatsApp prefilled message
+    // Google Sheet endpoint (Apps Script Web App URL — see google-apps-script.gs for setup).
+    // Paste the /exec URL you get after deploying the Apps Script here:
+    var SHEET_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    // Lead form -> save to Google Sheet + Meta Pixel Lead + Thank-you page
     function sendLead(e) {
       e.preventDefault();
       var f = e.target;
       // Spam honeypot: real users never see/fill this field
       if (f.company && f.company.value) { return false; }
+
+      var lead = {
+        name: f.name.value,
+        phone: f.phone.value,
+        bhk: f.bhk.value,
+        area: f.area.value || '-',
+        source: 'Landing page (20% OFF offer)',
+        page: window.location.href
+      };
+
+      // 1) Save the lead to the Google Sheet (survives the page redirect via sendBeacon).
+      try {
+        if (SHEET_ENDPOINT.indexOf('http') === 0) {
+          var payload = JSON.stringify(lead);
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(SHEET_ENDPOINT, payload);
+          } else {
+            fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
+          }
+        }
+      } catch (err) { /* never block the user on a logging failure */ }
+
+      // 2) Track the conversion in Meta Pixel.
+      try { if (window.fbq) fbq('track', 'Lead'); } catch (err) {}
+
+      // 3) Build the prefilled WhatsApp message and stash it for the thank-you page.
       var msg =
         'Hi Saum Studio! I\'d like a free interior design consultation.%0A%0A' +
-        'Name: ' + encodeURIComponent(f.name.value) + '%0A' +
-        'Phone: ' + encodeURIComponent(f.phone.value) + '%0A' +
-        'Home: ' + encodeURIComponent(f.bhk.value) + '%0A' +
-        'Locality: ' + encodeURIComponent(f.area.value || '-') + '%0A' +
+        'Name: ' + encodeURIComponent(lead.name) + '%0A' +
+        'Phone: ' + encodeURIComponent(lead.phone) + '%0A' +
+        'Home: ' + encodeURIComponent(lead.bhk) + '%0A' +
+        'Locality: ' + encodeURIComponent(lead.area) + '%0A' +
         '(via landing page · 20% OFF offer)';
-      window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+      try { sessionStorage.setItem('saum_wa', 'https://wa.me/' + WA_NUMBER + '?text=' + msg); } catch (err) {}
+
+      // 4) Send the visitor to the thank-you page.
+      window.location.href = 'thank-you.html';
       return false;
     }
 
